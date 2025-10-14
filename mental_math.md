@@ -637,15 +637,646 @@ With just 5 minutes of daily practice, these tricks will become second nature wi
 
 ---
 
-## 🎓 WHAT'S NEXT?
+## 🎓 ADVANCED SECTION
 
-Once you're comfortable with these basics, you can learn:
+**⚠️ ONLY START THIS SECTION AFTER YOU'VE MASTERED THE BASICS!**
 
-- More advanced multiplication tricks
-- Quick ways to estimate square roots
-- Converting fractions to percentages
-- Mental calculation for larger numbers
+If you can do most of the practice problems without looking back, you're ready for these advanced tricks. If not, spend more time practicing the basics—there's no rush!
 
-But for now, focus on mastering these fundamental tricks. They'll make your everyday math SO much easier!
+### Before You Continue:
+✅ You should be comfortable with:
+- Multiplying by 5, 9, 10, 11, 25
+- Finding 10%, 20%, 15%, 25%, 50%
+- Rounding and fixing for addition/subtraction
+- Squaring numbers ending in 5
 
-**Good luck, and happy calculating!** 🚀
+**Ready? Let's level up!** 🚀
+
+---
+
+## 7️⃣ ADVANCED MULTIPLICATION TRICKS
+
+### ✨ Multiplying Two Numbers Close to Each Other
+
+**When to use:** When multiplying two numbers that are close together (within 5-10 of each other).
+
+**The trick:**
+
+1. Find the number halfway between them (the average)
+2. Square that middle number
+3. Find how far apart they are from the middle
+4. Square that distance
+5. Subtract: (middle²) - (distance²)
+
+**Example: 48 × 52**
+
+**Step 1:** What's halfway between 48 and 52?
+- Average: (48 + 52) ÷ 2 = 100 ÷ 2 = **50**
+
+**Step 2:** Square the middle number
+- 50² = **2500**
+
+**Step 3:** How far are they from the middle?
+- 52 is 2 above 50
+- 48 is 2 below 50
+- Distance: **2**
+
+**Step 4:** Square the distance
+- 2² = **4**
+
+**Step 5:** Subtract
+- 2500 - 4 = **2496**
+
+**Why this works:** This uses the algebraic identity (a-b)(a+b) = a² - b²
+
+**More examples:**
+
+**Example: 23 × 27**
+- Middle: 25
+- 25² = 625 (use the 5-ending trick!)
+- Distance: 2
+- 2² = 4
+- Answer: 625 - 4 = **621**
+
+**Example: 96 × 104**
+- Middle: 100
+- 100² = 10000
+- Distance: 4
+- 4² = 16
+- Answer: 10000 - 16 = **9984**
+
+---
+
+### ✨ Multiplying by Numbers Near 100
+
+**The trick:** When multiplying by numbers close to 100 (like 97, 103, etc.)
+
+**Formula:** 
+1. Find how far from 100 (call this the difference)
+2. Add/subtract the difference from the other number
+3. Add two zeros
+4. Add/subtract (difference × ones digit)
+
+**Example: 87 × 97**
+
+**Step 1:** How far is 97 from 100?
+- 97 is 3 BELOW 100 (difference = -3)
+
+**Step 2:** What's 87 - 3?
+- 87 - 3 = 84
+
+**Step 3:** Add two zeros
+- 84 → **8400**
+
+**Step 4:** What's 87's distance from 100?
+- 87 is 13 below 100
+- So: 13 × 3 = 39
+- Since both are below 100, we ADD: 8400 + 39 = **8439**
+
+**Simpler method for this example:**
+- 87 × 97
+- Think: 87 × 100 - 87 × 3
+- = 8700 - 261
+- = **8439**
+
+**Example: 94 × 103**
+- 94 × 100 = 9400
+- 94 × 3 = 282
+- 9400 + 282 = **9682**
+
+---
+
+### ✨ Multiplying by 125
+
+**The trick:** Multiply by 1000, then divide by 8.
+
+**Why this works:** 125 × 8 = 1000, so 125 = 1000 ÷ 8
+
+**How to divide by 8:** Cut in half three times!
+
+**Example: 24 × 125**
+
+**Step 1:** Multiply by 1000
+- 24 × 1000 = 24000
+
+**Step 2:** Divide by 8 (cut in half 3 times)
+- 24000 ÷ 2 = 12000
+- 12000 ÷ 2 = 6000
+- 6000 ÷ 2 = **3000**
+
+**More examples:**
+
+- 16 × 125 → 16000 ÷ 8 = **2000**
+- 32 × 125 → 32000 ÷ 8 = **4000**
+- 40 × 125 → 40000 ÷ 8 = **5000**
+
+---
+
+### ✨ Multiplying Two-Digit Numbers (Criss-Cross Method)
+
+**When to use:** Any two-digit multiplication!
+
+**The pattern:** For AB × CD:
+
+1. **Ones place:** Multiply B × D
+2. **Tens place:** Cross-multiply and add: (A × D) + (B × C)
+3. **Hundreds place:** Multiply A × C
+4. Handle any carrying
+
+**Example: 23 × 14** *(Let's break it down)*
+
+Think of 23 as (20 + 3) and 14 as (10 + 4)
+
+**Step 1:** Ones place
+- 3 × 4 = 12
+- Write down **2**, carry the 1
+
+**Step 2:** Tens place (the criss-cross)
+- (2 × 4) + (3 × 1) = 8 + 3 = 11
+- Add the carry from step 1: 11 + 1 = 12
+- Write down **2**, carry the 1
+
+**Step 3:** Hundreds place
+- 2 × 1 = 2
+- Add the carry: 2 + 1 = **3**
+
+**Answer: 322**
+
+**Visual aid:**
+```
+    23
+  × 14
+  ----
+  1. 3×4=12 (write 2, carry 1)
+  2. (2×4)+(3×1)=11, +carry=12 (write 2, carry 1)
+  3. 2×1=2, +carry=3 (write 3)
+  = 322
+```
+
+**Another example: 31 × 22**
+
+- Ones: 1 × 2 = **2**
+- Tens: (3 × 2) + (1 × 2) = 6 + 2 = **8**
+- Hundreds: 3 × 2 = **6**
+- Answer: **682**
+
+---
+
+## 8️⃣ ADVANCED PERCENTAGE TRICKS
+
+### ✨ Finding Any Percentage Using 1%
+
+**The trick:** Find 1% first, then multiply.
+
+**To find 1%:** Move the decimal TWO places left (or divide by 100)
+
+**Example: Find 37% of 250**
+
+**Step 1:** Find 1%
+- 250 → 2.50 (moved decimal twice)
+
+**Step 2:** Multiply by the percentage you want
+- 2.50 × 37 = ?
+- Think: 2.5 × 30 = 75
+- Plus: 2.5 × 7 = 17.5
+- Total: 75 + 17.5 = **92.5**
+
+**Example: Find 8% of 425**
+
+- 1% of 425 = 4.25
+- 8% = 4.25 × 8 = **34.00**
+
+---
+
+### ✨ The Flip Trick (MIND-BLOWING!)
+
+**The secret:** A% of B = B% of A
+
+**This means:** 4% of 75 is the SAME as 75% of 4!
+
+**Why this matters:** Sometimes the flipped version is WAY easier!
+
+**Example: Find 4% of 75** *(the hard way)*
+
+- 1% of 75 = 0.75
+- 4% = 0.75 × 4 = 3.00
+
+**Example: Find 4% of 75** *(the SMART way)*
+
+- Flip it: 75% of 4
+- 75% = 3/4 (three-quarters)
+- 3/4 of 4 = **3** ✓
+
+**Way easier!**
+
+**More examples:**
+
+- 8% of 25 = 25% of 8 = **2** (much easier!)
+- 16% of 50 = 50% of 16 = **8** (just half of 16!)
+- 2% of 45 = 45% of 2 = **0.9** (easier to find 45% of 2)
+
+**💡 PRO TIP:** Always check if flipping makes it easier before calculating!
+
+---
+
+### ✨ Percentage Increase/Decrease
+
+**To find percentage change:**
+
+1. Find the difference (new - old)
+2. Divide by the original
+3. Multiply by 100
+
+**Example: Price went from $40 to $50**
+
+**Step 1:** Find difference
+- 50 - 40 = 10
+
+**Step 2:** Divide by original
+- 10 ÷ 40 = 0.25
+
+**Step 3:** Convert to percentage
+- 0.25 × 100 = **25% increase**
+
+**Example: Price dropped from $80 to $60**
+
+- Difference: 80 - 60 = 20
+- Divide: 20 ÷ 80 = 0.25
+- Convert: **25% decrease**
+
+---
+
+### ✨ Quick Discount Calculation
+
+**To find final price after a discount:**
+
+Instead of finding the discount and subtracting, find what's LEFT!
+
+**Example: 30% off a $250 item**
+
+**The slow way:**
+- Find 30% of 250 = 75
+- Subtract: 250 - 75 = 175
+
+**The fast way:**
+- 30% off means you pay 70%
+- Find 70% of 250
+- 10% = 25, so 70% = 25 × 7 = **$175**
+
+**More examples:**
+
+- 25% off means pay **75%**
+- 40% off means pay **60%**
+- 15% off means pay **85%**
+
+---
+
+## 9️⃣ ADVANCED SQUARING TRICKS
+
+### ✨ Squaring Numbers Ending in 1
+
+**The trick:** For a number ending in 1:
+
+1. Round down to the nearest 10
+2. Square that
+3. Add the two numbers (the rounded and original)
+
+**Example: 31²**
+
+**Step 1:** Round down
+- 31 → 30
+
+**Step 2:** Square it
+- 30² = 900
+
+**Step 3:** Add the two numbers
+- 31 + 30 = 61
+- 900 + 61 = **961**
+
+**More examples:**
+
+- 21² → 20² = 400, plus (21+20) = 41 → **441**
+- 41² → 40² = 1600, plus (41+40) = 81 → **1681**
+- 51² → 50² = 2500, plus (51+50) = 101 → **2601**
+
+---
+
+### ✨ Squaring Numbers Ending in 9
+
+**The trick:** For a number ending in 9:
+
+1. Round up to the nearest 10
+2. Square that
+3. Subtract the two numbers (the rounded and original)
+
+**Example: 29²**
+
+**Step 1:** Round up
+- 29 → 30
+
+**Step 2:** Square it
+- 30² = 900
+
+**Step 3:** Subtract the two numbers
+- 29 + 30 = 59
+- 900 - 59 = **841**
+
+**More examples:**
+
+- 19² → 20² = 400, minus (19+20) = 39 → **361**
+- 39² → 40² = 1600, minus (39+40) = 79 → **1521**
+- 49² → 50² = 2500, minus (49+50) = 99 → **2401**
+
+---
+
+### ✨ Squaring Numbers Near 50
+
+**The trick:** For numbers close to 50:
+
+1. Find the distance from 50
+2. Add that distance to 25
+3. That's your first part (in hundreds)
+4. Square the distance
+5. That's your second part
+
+**Example: 53²**
+
+**Step 1:** Distance from 50
+- 53 - 50 = 3
+
+**Step 2:** Add to 25
+- 25 + 3 = 28
+
+**Step 3:** This is the hundreds part
+- 28 → **2800**
+
+**Step 4:** Square the distance
+- 3² = 9
+
+**Step 5:** Add them
+- 2800 + 9 = **2809**
+
+**More examples:**
+
+- 47² → (25-3=22) and (3²=9) → **2209**
+- 56² → (25+6=31) and (6²=36) → **3136**
+- 44² → (25-6=19) and (6²=36) → **1936**
+
+---
+
+## 🔟 ADVANCED ESTIMATION TECHNIQUES
+
+### ✨ Estimating Square Roots
+
+**The trick:** Find perfect squares nearby, then estimate.
+
+**Example: √50** *(What's the square root of 50?)*
+
+**Step 1:** Find perfect squares nearby
+- 49 = 7² (too small)
+- 64 = 8² (too big)
+- So √50 is between 7 and 8
+
+**Step 2:** See which it's closer to
+- 50 is closer to 49 than to 64
+- So √50 is closer to 7
+
+**Step 3:** Estimate
+- Roughly **7.1** (actual: 7.07)
+
+**More examples:**
+
+- √20 → between 4² (16) and 5² (25) → about **4.5** (actual: 4.47)
+- √80 → between 8² (64) and 9² (81) → about **8.9** (actual: 8.94)
+- √30 → between 5² (25) and 6² (36) → about **5.5** (actual: 5.48)
+
+---
+
+### ✨ Fraction to Percentage Conversion
+
+**Common fractions you should memorize:**
+
+- 1/2 = **50%**
+- 1/3 = **33.3%** (about 33%)
+- 1/4 = **25%**
+- 1/5 = **20%**
+- 1/8 = **12.5%**
+- 1/10 = **10%**
+
+**To convert any fraction:**
+
+1. Divide the top by the bottom
+2. Multiply by 100
+
+**Example: Convert 3/8 to a percentage**
+
+- 3 ÷ 8 = 0.375
+- 0.375 × 100 = **37.5%**
+
+**Or use what you know:**
+- 1/8 = 12.5%
+- So 3/8 = 12.5% × 3 = **37.5%**
+
+---
+
+## 1️⃣1️⃣ LIGHTNING-FAST ADDITION & SUBTRACTION
+
+### ✨ Adding Three or More Numbers
+
+**The trick:** Look for pairs that make 10, 20, 50, or 100.
+
+**Example: 7 + 28 + 3 + 12**
+
+**Step 1:** Find pairs that make 10
+- 7 + 3 = 10
+- No other obvious pairs
+
+**Step 2:** Find pairs that make other easy numbers
+- 28 + 12 = 40
+
+**Step 3:** Add the easy numbers
+- 10 + 40 = **50**
+
+**Example: 15 + 33 + 45 + 17**
+
+- 15 + 45 = 60 (easy pair!)
+- 33 + 17 = 50 (easy pair!)
+- 60 + 50 = **110**
+
+---
+
+### ✨ The Complement Method (Advanced Rounding)
+
+**For subtraction:** Round BOTH numbers to make easier calculation.
+
+**Example: 894 - 467**
+
+**Step 1:** Round both to nearest hundred
+- 894 → 900 (added 6)
+- 467 → 500 (added 33)
+
+**Step 2:** Subtract the easy numbers
+- 900 - 500 = 400
+
+**Step 3:** Fix the rounding
+- We added 6 to the first number (makes answer 6 too big)
+- We added 33 to the second number (makes answer 33 too small)
+- Net effect: 400 - 6 + 33 = **427**
+
+---
+
+## 1️⃣2️⃣ ADVANCED PRACTICE PROBLEMS
+
+**Challenge yourself!** (Answers at bottom)
+
+**Advanced Multiplication:**
+
+1. 48 × 52 (close together trick)
+2. 27 × 125
+3. 31 × 23 (criss-cross method)
+
+**Advanced Squaring:**
+
+4. 29²
+5. 56²
+6. 41²
+
+**Advanced Percentages:**
+
+7. 17% of 300 (use 1% method)
+8. 4% of 25 (use flip trick)
+9. What's 30% off of $180? (use the "what's left" method)
+
+**Estimation:**
+
+10. √75 (estimate)
+11. Convert 3/5 to percentage
+
+**Speed Challenge:**
+
+12. 15 + 35 + 25 + 45 (look for easy pairs)
+13. 897 - 358 (use complement method)
+
+---
+
+## ✅ ADVANCED ANSWERS
+
+1. 48 × 52: Middle = 50, 50² = 2500, distance² = 4, answer = **2496**
+2. 27 × 125: 27000 ÷ 8 = **3375**
+3. 31 × 23: (1×3=3), (3×3)+(1×2)=11, (3×2=6), answer = **713**
+4. 29²: 30² - (29+30) = 900 - 59 = **841**
+5. 56²: (25+6=31)+(6²=36) = 3100 + 36 = **3136**
+6. 41²: 40² + (41+40) = 1600 + 81 = **1681**
+7. 17% of 300: 1% = 3, so 17% = 51, **51**
+8. 4% of 25: Flip to 25% of 4 = **1**
+9. 30% off $180: Pay 70%, which is 7×18 = **$126**
+10. √75: Between 8² (64) and 9² (81), closer to 9, about **8.7** (actual: 8.66)
+11. 3/5 = 0.6 = **60%**
+12. 15+35+25+45: (15+45)+(35+25) = 60+60 = **120**
+13. 897-358: 900-360 = 540, then 540-3+2 = **539**
+
+---
+
+## 🏆 MASTER-LEVEL CHALLENGES
+
+**Only attempt these after mastering all advanced tricks!**
+
+### The Ultimate Challenge Set:
+
+1. 77 × 83 (close together method)
+2. 89 × 94 (numbers near 90)
+3. 64 × 125 (×125 trick)
+4. 99² (squaring numbers ending in 9)
+5. 18% of 450 (your choice of method)
+6. Find 7% of 60 using the flip trick
+7. A $850 item is 35% off. What do you pay?
+8. √145 (estimate to nearest 0.5)
+9. 23 + 47 + 77 + 53 (find the pattern)
+10. 1234 - 567 (complement method)
+
+**Solutions:**
+
+1. Middle=80, 80²=6400, dist²=9, **6391**
+2. 89×90=8010, minus 89, **7921** (or use 90²-89-90=8100-179=7921)
+3. 64000÷8=**8000**
+4. 100²-(99+100)=10000-199=**9801**
+5. 10%=45, 5%=22.5, so 18%=45+22.5+22.5=**81** (or 1%=4.5, 18×4.5=81)
+6. Flip to 60% of 7 = 0.6×7 = **4.2**
+7. Pay 65% of 850: 10%=85, 65%=85×6.5=**$552.50**
+8. Between 12²(144) and 13²(169), very close to 12, about **12.0** (actual: 12.04)
+9. (23+77)+(47+53)=100+100=**200**
+10. 1240-570=670, adjust: 670-6+3=**667**
+
+---
+
+## 🎯 YOUR ADVANCED LEARNING PLAN
+
+**🏅 Mastery Checklist:**
+
+After completing this section, you should be able to:
+
+✅ Multiply any two-digit numbers mentally (criss-cross)
+✅ Square numbers ending in 1 or 9 quickly
+✅ Find any percentage using multiple methods
+✅ Estimate square roots to within 0.5
+✅ Add/subtract large numbers using complement method
+✅ Choose the easiest method for each problem
+
+**📚 Continue Your Journey:**
+
+Once you've mastered these advanced tricks:
+
+1. **Speed Practice:** Time yourself on mixed problems
+2. **Real-World Application:** Use these daily in work/shopping
+3. **Teach Others:** Teaching solidifies your knowledge
+4. **Create Challenges:** Make up your own problems
+5. **Explore Further:** Look into Vedic math or other systems
+
+**🌟 Final Wisdom:**
+
+*"The difference between basics and advanced is just practice time. You're not learning something 'harder'—you're just building on what you already know!"*
+
+Every advanced trick uses the same basic principles you've already mastered:
+- Breaking numbers into easier pieces
+- Using patterns you recognize
+- Building from simple operations
+
+**You've got this!** Keep practicing, stay curious, and enjoy the amazing power of mental math! 🎉
+
+---
+
+## 💡 QUICK REFERENCE SHEET
+
+**Print this out or take a screenshot for easy reference!**
+
+### MULTIPLICATION
+- ×5: Multiply by 10, divide by 2
+- ×9: Multiply by 10, subtract original
+- ×11: Add digits between original digits
+- ×25: Multiply by 100, divide by 4
+- ×125: Multiply by 1000, divide by 8
+- Numbers ending in 5²: N×(N+1), add 25
+
+### PERCENTAGES
+- 10%: Move decimal left one place
+- 5%: Half of 10%
+- 20%: Double 10%
+- 15%: Add 10% + 5%
+- 25%: Divide by 4
+- 50%: Divide by 2
+- 1%: Move decimal left two places
+- **Flip trick:** A% of B = B% of A
+
+### SQUARING SHORTCUTS
+- Ends in 5: N×(N+1), add 25
+- Ends in 1: (N-1)² + N + (N-1)
+- Ends in 9: (N+1)² - N - (N+1)
+- Close to 50: (25±distance)×100 + distance²
+
+### SUBTRACTION
+- From 100: (9-tens)(10-ones)
+- From 1000: (9-X)(9-Y)(10-Z)
+
+**Keep this handy until these tricks become automatic!** 🚀
+
+**Congratulations on completing the entire guide! You're now equipped with mental math superpowers!** �✨
