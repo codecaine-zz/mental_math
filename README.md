@@ -1,11 +1,14 @@
-# Mental Math Cheat Sheet
+# Mental Math Cheat Sheet & Trainer
 
 A compact, practice-ready set of mental math shortcuts, examples, and mnemonics. Designed for fast recall and 5-second drills.
 
 - Main sheet: see `mental_math.md`
+- Interactive trainer: see `mental_math_trainer.html`
 - Audience: students, interview prep, speed arithmetic fans, and anyone who wants faster everyday math.
 
-## What’s inside
+## What's inside
+
+### Cheat Sheet (`mental_math.md`)
 
 - Addition & subtraction shortcuts (round-and-fix, complements)
 - Multiplication patterns (×9/11/25/75/125, near-base tricks, cross-add)
@@ -14,9 +17,21 @@ A compact, practice-ready set of mental math shortcuts, examples, and mnemonics.
 - Roots & estimates (linear approximations for √ and ∛, near-10000 √)
 - Bonus mini-tricks and a step-by-step practice plan
 
-Open `mental_math.md` for the full, formatted tables and examples.
+### Interactive Trainer (`mental_math_trainer.html`)
+
+- Timed mental math practice sessions
+- Customizable difficulty settings (operand ranges, time limits)
+- Support for addition, subtraction, multiplication, and division
+- Built-in hints based on mental math techniques
+- Integrated cheat sheet with quick reference tips
+- Performance tracking and statistics
+- Fixed operand practice (e.g., focus on specific times tables)
+
+Open `mental_math.md` for the full, formatted tables and examples, or `mental_math_trainer.html` in your browser for interactive practice.
 
 ## Quick start
+
+### Using the Cheat Sheet
 
 1) Open `mental_math.md` and pick ONE shortcut.
 2) Create a mini-set (8–10 problems) matching that rule.
@@ -24,6 +39,17 @@ Open `mental_math.md` for the full, formatted tables and examples.
 4) Check answers quickly. Add a second shortcut once comfortable.
 
 Tip: Use a timer (phone/desktop) and track your average time per set.
+
+### Using the Interactive Trainer
+
+1) Open `mental_math_trainer.html` in your web browser.
+2) Configure your practice settings (operators, number ranges, time limit).
+3) Click "Start Game" to begin a timed practice session.
+4) Use the built-in "Hint" button to see mental math techniques for difficult problems.
+5) Access the "Cheat Sheet" button for quick reference to mental math tricks.
+6) Review your performance statistics after each session.
+
+Tip: Start with smaller number ranges and work your way up as you improve.
 
 ## Printing / formatting
 

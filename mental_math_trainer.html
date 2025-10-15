@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Math Trainer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3b82f6; /* blue-500 */
+            --secondary-color: #10b981; /* emerald-500 */
+            --accent-color: #f59e0b; /* amber-500 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .config-toggle-button {
+            transition: transform 0.3s ease;
+        }
+        .rotated {
+            transform: rotate(180deg);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #e5e7eb;
+        }
+        .btn-primary {
+            transition: all 0.15s ease;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5);
+        }
+        .btn-primary:hover {
+            background-color: #2563eb; /* blue-700 */
+            box-shadow: 0 6px 8px -2px rgba(59, 130, 246, 0.7);
+        }
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body class="p-4 flex items-start sm:items-center justify-center min-h-screen">
+
+    <div id="game-container" class="w-full max-w-lg md:max-w-2xl">
+        <header class="text-center mb-4 relative">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800">🧠 Math Trainer</h1>
+            <p class="text-gray-500 mt-1">Sharpen your mental math skills!</p>
+            <button id="cheat-sheet-btn" class="absolute top-0 right-0 mt-2 mr-2 bg-gray-200 text-gray-600 font-semibold py-1 px-3 rounded-full text-sm hover:bg-gray-300 transition">
+                Cheat Sheet
+            </button>
+        </header>
+
+        <!-- Configuration Panel -->
+        <div class="card mb-4 p-6 md:p-8">
+            <div id="config-header" class="flex justify-between items-center mb-4 cursor-pointer">
+                <h2 class="text-xl font-semibold text-gray-700">Settings</h2>
+                <button id="config-toggle-btn" class="text-gray-500 config-toggle-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+            </div>
+
+            <div id="config-panel" class="space-y-4 pt-2 custom-scrollbar max-h-96 overflow-y-auto">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Operators</label>
+                    <div id="operator-selection" class="flex flex-wrap gap-2">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" id="op-add" value="+" checked class="form-checkbox h-5 w-5 text-blue-600 rounded">
+                            <span class="ml-2 text-gray-700">+ Addition</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" id="op-sub" value="-" checked class="form-checkbox h-5 w-5 text-blue-600 rounded">
+                            <span class="ml-2 text-gray-700">- Subtraction</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" id="op-mul" value="*" checked class="form-checkbox h-5 w-5 text-blue-600 rounded">
+                            <span class="ml-2 text-gray-700">× Multiplication</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" id="op-div" value="/" class="form-checkbox h-5 w-5 text-blue-600 rounded">
+                            <span class="ml-2 text-gray-700">÷ Division (Integer only)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex space-x-4">
+                    <div class="flex-1">
+                        <label for="min-operand" class="block text-sm font-medium text-gray-700">Min Operand</label>
+                        <input type="number" id="min-operand" value="1" min="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="flex-1">
+                        <label for="max-operand" class="block text-sm font-medium text-gray-700">Max Operand</label>
+                        <input type="number" id="max-operand" value="20" min="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                <div>
+                    <label for="max-result" class="block text-sm font-medium text-gray-700">Max Result (Optional)</label>
+                    <p class="text-xs text-gray-500 mb-1">Caps the maximum possible answer (e.g., 100).</p>
+                    <input type="number" id="max-result" placeholder="Leave blank for no limit" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="fixed-operand" class="block text-sm font-medium text-gray-700">Fixed Operand (Optional)</label>
+                    <p class="text-xs text-gray-500 mb-1">Practice a specific times table (e.g., '9').</p>
+                    <input type="number" id="fixed-operand" placeholder="Leave blank for random" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="game-duration" class="block text-sm font-medium text-gray-700">Game Duration (seconds, 0 for infinite)</label>
+                    <input type="number" id="game-duration" value="60" min="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <button id="start-button" class="w-full btn-primary bg-blue-500 text-white font-bold py-3 md:py-4 px-4 rounded-xl text-lg md:text-xl shadow-lg">Start Game</button>
+            </div>
+        </div>
+
+        <!-- Game Interface -->
+        <div id="game-interface" class="card hidden space-y-4 md:space-y-6 p-6 md:p-8">
+            <div class="flex justify-between text-lg md:text-xl font-semibold text-gray-600">
+                <span id="score-display">Score: 0</span>
+                <span id="timer-display" class="text-blue-600">Time: 0s</span>
+            </div>
+            <div class="text-center py-6 md:py-8">
+                <p class="text-6xl md:text-7xl font-extrabold text-gray-800 tracking-wider" id="problem-text">?</p>
+            </div>
+            <div class="space-y-4">
+                <input type="number" id="answer-input" placeholder="Your Answer" class="block w-full text-center text-2xl md:text-3xl p-3 md:p-4 border-2 border-gray-300 rounded-xl shadow-inner focus:ring-blue-500 focus:border-blue-500">
+                <div class="flex space-x-4">
+                    <button id="submit-button" class="flex-1 btn-primary bg-secondary-color text-white font-bold py-3 md:py-4 rounded-xl text-lg md:text-xl shadow-lg">Submit</button>
+                    <button id="hint-button" class="bg-amber-500 text-white font-bold py-3 md:py-4 px-4 rounded-xl text-lg md:text-xl hover:bg-amber-600 transition duration-150">Hint</button>
+                </div>
+            </div>
+            <div id="hint-area" class="text-center text-sm md:text-base p-3 bg-blue-100 text-blue-800 rounded-lg hidden"></div>
+        </div>
+
+        <!-- Result Modal -->
+        <div id="result-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">
+            <div class="card w-full max-w-sm text-center p-6 md:p-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" id="modal-title">Time's Up!</h2>
+                <div id="final-score" class="text-blue-600 font-extrabold"></div>
+                <button id="reset-button" class="w-full btn-primary bg-blue-500 text-white font-bold py-3 md:py-4 rounded-xl text-lg md:text-xl shadow-lg mt-6">Play Again</button>
+            </div>
+        </div>
+        
+        <!-- Cheat Sheet Modal -->
+        <div id="cheat-sheet-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">
+            <div class="card w-full max-w-lg text-left p-6 md:p-8 relative">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Mental Math Cheat Sheet</h2>
+                <button id="close-cheat-sheet-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+                <div id="cheat-sheet-content" class="space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar pr-2">
+                    <!-- Content will be injected by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Message Box -->
+        <div id="feedback-message" aria-live="polite" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 p-3 rounded-xl text-white font-semibold shadow-2xl transition duration-300 ease-out opacity-0 translate-y-4 pointer-events-none"></div>
+    </div>
+
+    <script>
+        const MathTrainer = {
+            // --- STATE & CONFIG ---
+            config: {
+                minOperand: 1, maxOperand: 20, maxResult: null, duration: 60, fixedOperand: null,
+                operators: [
+                    { symbol: '+', enabled: true, name: 'Addition' }, { symbol: '-', enabled: true, name: 'Subtraction' },
+                    { symbol: '*', enabled: true, name: 'Multiplication' }, { symbol: '/', enabled: false, name: 'Division' }
+                ]
+            },
+            state: { score: 0, timeLeft: 0, timerId: null, currentProblem: null, problemStartTime: 0, isRunning: false, history: [] },
+            elements: {},
+
+            // --- CHEAT SHEET CONTENT ---
+            cheatSheetContent: `
+                <h3 class="text-xl font-semibold text-gray-700">Addition Tricks</h3>
+                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                    <li><b>Left-to-Right:</b> Instead of carrying, add the largest parts first. <br><i>Ex: 58 + 26 = (50+20) + (8+6) = 70 + 14 = 84</i></li>
+                    <li><b>Rounding:</b> Round one number to the nearest 10, then adjust. <br><i>Ex: 69 + 25 = (70 + 25) - 1 = 95 - 1 = 94</i></li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-700 mt-4">Subtraction Tricks</h3>
+                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                    <li><b>Count Up:</b> Find the difference by counting up. <br><i>Ex: 73 - 48. From 48 to 50 is 2, from 50 to 70 is 20, from 70 to 73 is 3. Total: 2+20+3 = 25.</i></li>
+                    <li><b>Rounding:</b> Subtract a rounded number, then compensate. <br><i>Ex: 100 - 38 = (100 - 40) + 2 = 60 + 2 = 62</i></li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-700 mt-4">Multiplication Tricks</h3>
+                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                    <li><b>Multiply by 5:</b> Multiply by 10, then divide by 2. <br><i>Ex: 88 × 5 = (88 × 10) / 2 = 880 / 2 = 440</i></li>
+                    <li><b>Multiply by 9:</b> Multiply by 10, then subtract the original number. <br><i>Ex: 45 × 9 = (45 × 10) - 45 = 450 - 45 = 405</i></li>
+                    <li><b>Multiply by 11:</b> For a 2-digit number, put the sum of the digits in the middle. <br><i>Ex: 35 × 11 = 3 (3+5) 5 = 385</i></li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-700 mt-4">Division Tricks</h3>
+                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                    <li><b>Factor Out:</b> Break the dividend into easier parts. <br><i>Ex: 132 / 12 = (120 / 12) + (12 / 12) = 10 + 1 = 11</i></li>
+                    <li><b>Halving:</b> If both numbers are even, keep halving them until it's simple. <br><i>Ex: 192 / 24 = 96 / 12 = 48 / 6 = 8</i></li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-700 mt-4">Percentage Tricks</h3>
+                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                    <li><b>Find 10%:</b> Move the decimal point one place to the left. <br><i>Ex: 10% of 350 is 35.0</i></li>
+                    <li><b>Find 5%:</b> Find 10%, then take half of that. <br><i>Ex: 5% of 350 = (10% of 350) / 2 = 35 / 2 = 17.5</i></li>
+                    <li><b>Find 1%:</b> Move the decimal point two places to the left. <br><i>Ex: 1% of 350 is 3.50</i></li>
+                </ul>
+            `,
+
+            init() {
+                this.cacheDOMElements();
+                this.addEventListeners();
+                this.elements.configToggleBtn.classList.add('rotated');
+                this.elements.cheatSheetContent.innerHTML = this.cheatSheetContent;
+            },
+
+            cacheDOMElements() {
+                this.elements = {
+                    configCard: document.querySelector('.card:not(#game-interface)'),
+                    configHeader: document.getElementById('config-header'),
+                    configToggleBtn: document.getElementById('config-toggle-btn'),
+                    configPanel: document.getElementById('config-panel'),
+                    minOperandInput: document.getElementById('min-operand'),
+                    maxOperandInput: document.getElementById('max-operand'),
+                    maxResultInput: document.getElementById('max-result'),
+                    fixedOperandInput: document.getElementById('fixed-operand'),
+                    gameDurationInput: document.getElementById('game-duration'),
+                    startButton: document.getElementById('start-button'),
+                    gameInterface: document.getElementById('game-interface'),
+                    scoreDisplay: document.getElementById('score-display'),
+                    timerDisplay: document.getElementById('timer-display'),
+                    problemText: document.getElementById('problem-text'),
+                    answerInput: document.getElementById('answer-input'),
+                    submitButton: document.getElementById('submit-button'),
+                    hintButton: document.getElementById('hint-button'),
+                    hintArea: document.getElementById('hint-area'),
+                    resultModal: document.getElementById('result-modal'),
+                    modalTitle: document.getElementById('modal-title'),
+                    finalScore: document.getElementById('final-score'),
+                    resetButton: document.getElementById('reset-button'),
+                    feedbackMessage: document.getElementById('feedback-message'),
+                    cheatSheetBtn: document.getElementById('cheat-sheet-btn'),
+                    cheatSheetModal: document.getElementById('cheat-sheet-modal'),
+                    closeCheatSheetBtn: document.getElementById('close-cheat-sheet-btn'),
+                    cheatSheetContent: document.getElementById('cheat-sheet-content'),
+                };
+            },
+
+            addEventListeners() {
+                this.elements.configHeader.addEventListener('click', () => this.toggleConfig());
+                this.elements.startButton.addEventListener('click', () => this.startGame());
+                this.elements.submitButton.addEventListener('click', () => this.checkAnswer());
+                this.elements.hintButton.addEventListener('click', () => this.showHint());
+                this.elements.resetButton.addEventListener('click', () => this.resetGame());
+                this.elements.answerInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.checkAnswer(); });
+                this.elements.cheatSheetBtn.addEventListener('click', () => this.showCheatSheet());
+                this.elements.closeCheatSheetBtn.addEventListener('click', () => this.hideCheatSheet());
+            },
+
+            toggleConfig() {
+                this.elements.configPanel.classList.toggle('hidden');
+                this.elements.configToggleBtn.classList.toggle('rotated');
+            },
+            
+            showCheatSheet() { this.elements.cheatSheetModal.classList.remove('hidden'); },
+            hideCheatSheet() { this.elements.cheatSheetModal.classList.add('hidden'); },
+
+            updateConfigFromUI() {
+                const minVal = parseInt(this.elements.minOperandInput.value) || 1;
+                const maxVal = parseInt(this.elements.maxOperandInput.value) || 20;
+                if (minVal >= maxVal) {
+                    this.elements.minOperandInput.value = Math.min(minVal, maxVal);
+                    this.elements.maxOperandInput.value = Math.max(minVal, maxVal, minVal + 1);
+                }
+                this.config.minOperand = Math.max(1, parseInt(this.elements.minOperandInput.value) || 1);
+                this.config.maxOperand = parseInt(this.elements.maxOperandInput.value) || 20;
+                this.config.duration = parseInt(this.elements.gameDurationInput.value) || 60;
+                const maxResultVal = parseInt(this.elements.maxResultInput.value);
+                this.config.maxResult = isNaN(maxResultVal) || maxResultVal <= 0 ? null : maxResultVal;
+                const fixedVal = parseInt(this.elements.fixedOperandInput.value);
+                this.config.fixedOperand = isNaN(fixedVal) ? null : fixedVal;
+                this.config.operators.forEach(op => {
+                    const elId = `op-${op.symbol === '*' ? 'mul' : op.symbol === '/' ? 'div' : op.symbol === '+' ? 'add' : 'sub'}`;
+                    op.enabled = document.getElementById(elId).checked;
+                });
+                if (this.config.operators.every(op => !op.enabled)) {
+                    document.getElementById('op-add').checked = true;
+                    this.config.operators.find(op => op.symbol === '+').enabled = true;
+                    this.showFeedback("Error: At least one operator must be selected.", 'incorrect');
+                }
+            },
+            
+            startGame() {
+                this.updateConfigFromUI();
+                this.state = { ...this.state, score: 0, history: [], isRunning: true, timeLeft: this.config.duration };
+                this.elements.configCard.classList.add('hidden');
+                this.elements.gameInterface.classList.remove('hidden');
+                this.elements.scoreDisplay.textContent = `Score: 0`;
+                this.elements.timerDisplay.textContent = `Time: ${this.config.duration}s`;
+                this.elements.answerInput.value = '';
+                this.elements.answerInput.focus();
+                this.elements.submitButton.disabled = false;
+                this.elements.hintButton.disabled = false;
+                this.generateNewProblem();
+                if (this.config.duration > 0) this.startTimer();
+                else this.elements.timerDisplay.textContent = `Time: ∞`;
+            },
+
+            startTimer() {
+                if (this.state.timerId) clearInterval(this.state.timerId);
+                this.state.timerId = setInterval(() => {
+                    this.state.timeLeft--;
+                    this.elements.timerDisplay.textContent = `Time: ${this.state.timeLeft}s`;
+                    if (this.state.timeLeft <= 0) {
+                        clearInterval(this.state.timerId);
+                        this.endGame("Time's Up!");
+                    }
+                }, 1000);
+            },
+            
+            endGame(message) {
+                this.state.isRunning = false;
+                if (this.state.timerId) clearInterval(this.state.timerId);
+                this.elements.submitButton.disabled = true;
+                this.elements.hintButton.disabled = true;
+                this.elements.modalTitle.textContent = message;
+                this.elements.finalScore.innerHTML = this.generateAnalysisReport();
+                this.elements.resultModal.classList.remove('hidden');
+            },
+
+            resetGame() {
+                this.elements.resultModal.classList.add('hidden');
+                this.elements.gameInterface.classList.add('hidden');
+                this.elements.configCard.classList.remove('hidden');
+                this.elements.answerInput.value = '';
+                this.elements.problemText.textContent = '?';
+                this.hideHint();
+            },
+
+            generateNewProblem() {
+                this.hideHint();
+                const enabledOps = this.config.operators.filter(op => op.enabled);
+                if (enabledOps.length === 0) return;
+                const operatorObj = enabledOps[Math.floor(Math.random() * enabledOps.length)];
+                const operator = operatorObj.symbol;
+                let num1, num2, answer;
+                const { minOperand, maxOperand, fixedOperand, maxResult } = this.config;
+                const getRandom = () => Math.floor(Math.random() * (maxOperand - minOperand + 1)) + minOperand;
+                let attempts = 0;
+                while (attempts < 100) {
+                    attempts++;
+                    [num1, num2] = (fixedOperand !== null) 
+                        ? (Math.random() < 0.5 ? [fixedOperand, getRandom()] : [getRandom(), fixedOperand])
+                        : [getRandom(), getRandom()];
+                    if (operator === '+') answer = num1 + num2;
+                    if (operator === '*') answer = num1 * num2;
+                    if (operator === '-') {
+                        if (num1 < num2) [num1, num2] = [num2, num1];
+                        answer = num1 - num2;
+                    }
+                    if (operator === '/') {
+                        if (num2 === 0) num2 = 1;
+                        let tempAnswer = getRandom();
+                        num1 = tempAnswer * num2;
+                        answer = tempAnswer;
+                        if (answer < minOperand || answer > maxOperand || (num1 > 1000 && maxOperand < 50)) continue;
+                    }
+                    if (maxResult !== null && answer > maxResult) continue;
+                    const problem = `${num1} ${operator === '*' ? '×' : operator} ${num2}`;
+                    this.state.currentProblem = { num1, num2, problem, answer, operator };
+                    this.elements.problemText.textContent = problem;
+                    this.elements.answerInput.value = '';
+                    this.elements.answerInput.focus();
+                    this.state.problemStartTime = performance.now();
+                    return;
+                }
+                this.elements.problemText.textContent = "Check settings";
+            },
+
+            checkAnswer() {
+                if (!this.state.isRunning || !this.state.currentProblem) return;
+                const userAnswer = parseInt(this.elements.answerInput.value);
+                if (isNaN(userAnswer)) {
+                    this.showFeedback("Please enter a number.", 'incorrect');
+                    return;
+                }
+                const problemDuration = performance.now() - this.state.problemStartTime;
+                const correct = userAnswer === this.state.currentProblem.answer;
+                if (correct) {
+                    this.state.score++;
+                    this.elements.scoreDisplay.textContent = `Score: ${this.state.score}`;
+                    this.showFeedback("Correct! +1", 'correct');
+                } else {
+                    this.showFeedback(`Incorrect. The answer was ${this.state.currentProblem.answer}.`, 'incorrect');
+                }
+                this.state.history.push({ ...this.state.currentProblem, correct, duration: problemDuration, userAnswer });
+                this.generateNewProblem();
+            },
+
+            showFeedback(message, type) {
+                const el = this.elements.feedbackMessage;
+                el.textContent = message;
+                el.className = 'fixed bottom-4 left-1/2 transform -translate-x-1/2 p-3 rounded-xl font-semibold shadow-2xl transition duration-300 ease-out';
+                const colorClass = type === 'correct' ? 'bg-green-600' : 'bg-red-600';
+                el.classList.add(colorClass, 'translate-y-0', 'opacity-100');
+                this.playTone(type === 'correct' ? 800 : 200, 100, type === 'correct' ? 'sine' : 'square');
+                setTimeout(() => {
+                    el.classList.remove('translate-y-0', 'opacity-100');
+                    el.classList.add('translate-y-4', 'opacity-0');
+                }, 1500);
+            },
+
+            showHint() {
+                const p = this.state.currentProblem;
+                if (!p) return;
+                let hintText = "";
+                if (p.operator === '+') hintText = `Try rounding: Calculate ${p.num1} + ${Math.round(p.num2 / 10) * 10}, then adjust.`;
+                else if (p.operator === '-') hintText = `Try counting up: What's the difference between ${p.num2} and ${p.num1}?`;
+                else if (p.operator === '*') hintText = `Try splitting a number: e.g., (${p.num1} × 10) + (${p.num1} × ${p.num2 - 10}).`;
+                else if (p.operator === '/') hintText = `Think multiplication: What number, times ${p.num2}, equals ${p.num1}?`;
+                this.elements.hintArea.innerHTML = `<span class="font-bold">Mental Tip:</span> ${hintText}`;
+                this.elements.hintArea.classList.remove('hidden');
+            },
+
+            hideHint() { this.elements.hintArea.classList.add('hidden'); },
+
+            generateAnalysisReport() {
+                if (this.state.history.length === 0) return `<p>No problems attempted.</p>`;
+                const totalCorrect = this.state.history.filter(p => p.correct).length;
+                const totalTime = this.state.history.reduce((sum, p) => sum + p.duration, 0);
+                const avgTime = (totalTime / this.state.history.length / 1000).toFixed(2);
+                return `<div class="text-gray-600 mb-6 space-y-2"><div class="text-5xl font-extrabold text-blue-600">${totalCorrect} / ${this.state.history.length}</div><p class="text-lg font-bold">Total Correct</p><p class="text-sm">Avg Time/Problem: <span class="font-bold">${avgTime}s</span></p></div>`;
+            },
+            
+            playTone(freq, duration, type = 'sine') {
+                try {
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    oscillator.type = type;
+                    oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                    gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+                    oscillator.start();
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration / 1000);
+                    oscillator.stop(audioCtx.currentTime + duration / 1000);
+                } catch(e) { console.warn("Audio playback failed.", e); }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => { MathTrainer.init(); });
+    </script>
+</body>
+</html>
+
